@@ -1,54 +1,51 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
-class VectorEnteros {
-private:
+class Vector {
     int vec[5];
-
 public:
-    VectorEnteros() {
-        cout << "Cargando vector de 5 elementos:\n";
-        for (int i = 0; i < 5; i++) {
-            cout << "Ingrese valor " << i+1 << ": ";
-            cin >> vec[i];
-        }
-    }
-
-    void imprimir() {
-        cout << "Vector completo: ";
-        for (int i = 0; i < 5; i++) {
-            cout << vec[i] << " ";
-        }
-        cout << endl;
-    }
-
-    void imprimir(int hasta) {
-        cout << "Desde 0 hasta " << hasta << ": ";
-        for (int i = 0; i <= hasta && i < 5; i++) {
-            cout << vec[i] << " ";
-        }
-        cout << endl;
-    }
-
-    void imprimir(int desde, int hasta) {
-        cout << "Rango " << desde << " a " << hasta << ": ";
-        if (desde < 0) desde = 0;
-        if (hasta > 4) hasta = 4;
-
-        for (int i = desde; i <= hasta; i++) {
-            cout << vec[i] << " ";
-        }
-        cout << endl;
-    }
+    Vector();
+    void imprimir();
+    void imprimir(int hasta);
+    void imprimir(int desde,int hasta);
 };
 
-int main() {
-    VectorEnteros v1;
-
-    v1.imprimir();
-    v1.imprimir(2);
-    v1.imprimir(1, 3);
-
-    return 0;
+Vector::Vector()
+{
+    cout<<"Ingrese 5 valores:\n";
+    for(int i=0; i<5; i++)
+        cin>>vec[i];
 }
 
+void Vector::imprimir()
+{
+    cout<<"Vector completo: ";
+    for(int i=0; i<5; i++)
+        cout<<vec[i]<<" ";
+    cout<<"\n";
+}
+
+void Vector::imprimir(int hasta)
+{
+    cout<<"Vector desde 0 hasta "<<hasta<<": ";
+    for(int i=0; i<=hasta && i<5; i++)
+        cout<<vec[i]<<" ";
+    cout<<"\n";
+}
+
+void Vector::imprimir(int desde,int hasta)
+{
+    cout<<"Vector desde "<<desde<<" hasta "<<hasta<<": ";
+    for(int i=desde; i<=hasta && i<5; i++)
+        cout<<vec[i]<<" ";
+    cout<<"\n";
+}
+
+int main()
+{
+    Vector v1;
+    v1.imprimir();
+    v1.imprimir(2);
+    v1.imprimir(1,3);
+    return 0;
+}

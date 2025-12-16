@@ -1,54 +1,58 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
 
 class Persona {
 protected:
     string nombre;
     int edad;
-
 public:
-    void cargarDatos() {
-        cout << "Nombre: ";
-        cin >> nombre;
-        cout << "Edad: ";
-        cin >> edad;
-    }
-
-    void imprimirDatos() {
-        cout << "Nombre: " << nombre << " - Edad: " << edad << endl;
-    }
+    void cargar();
+    void imprimir();
 };
 
-class Empleado : public Persona {
-private:
-    float sueldo;
-
-public:
-    void cargarSueldo() {
-        cout << "Sueldo: ";
-        cin >> sueldo;
-    }
-
-    void imprimirSueldo() {
-        cout << "Sueldo: " << sueldo << endl;
-    }
-};
-
-int main() {
-    Persona p1;
-    cout << "\nCargar persona:\n";
-    p1.cargarDatos();
-    p1.imprimirDatos();
-
-    Empleado e1;
-    cout << "\nCargar empleado:\n";
-    e1.cargarDatos();
-    e1.cargarSueldo();
-
-    cout << "\nDatos del empleado:\n";
-    e1.imprimirDatos();
-    e1.imprimirSueldo();
-
-    return 0;
+void Persona::cargar()
+{
+    cout<<"Ingrese nombre: ";
+    cin>>nombre;
+    cout<<"Ingrese edad: ";
+    cin>>edad;
 }
 
+void Persona::imprimir()
+{
+    cout<<"Nombre: "<<nombre<<"  Edad: "<<edad<<"\n";
+}
+
+class Empleado : public Persona {
+    float sueldo;
+public:
+    void cargarSueldo();
+    void imprimirSueldo();
+};
+
+void Empleado::cargarSueldo()
+{
+    cout<<"Ingrese sueldo: ";
+    cin>>sueldo;
+}
+
+void Empleado::imprimirSueldo()
+{
+    cout<<"Sueldo: "<<sueldo<<"\n";
+}
+
+int main()
+{
+    Persona p1;
+    cout<<"--- Carga Persona ---\n";
+    p1.cargar();
+    p1.imprimir();
+
+    Empleado e1;
+    cout<<"\n--- Carga Empleado ---\n";
+    e1.cargar();
+    e1.cargarSueldo();
+    e1.imprimir();
+    e1.imprimirSueldo();
+    return 0;
+}
